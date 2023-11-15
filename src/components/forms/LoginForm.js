@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <section className="h-screen flex flex-col items-center justify-center md:bg-teal-600">
       <form onSubmit={handleSubmit} className="w-[80%] md:w-[40%] md:bg-white md:px-5 md:py-10 flex flex-col gap-6 rounded">
-      <strong className="text-3xl font-bold">Login</strong>
+      <strong className="text-3xl font-bold text-center">Login</strong>
       <input
         type="email"
         name="email"

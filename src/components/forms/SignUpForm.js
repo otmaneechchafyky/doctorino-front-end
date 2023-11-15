@@ -47,7 +47,7 @@ const SignupForm = () => {
   return (
     <section className="h-screen flex flex-col items-center justify-center md:bg-teal-600">
       <form onSubmit={handleSubmit} className="w-[80%] md:w-[40%] md:bg-white md:px-5 md:py-8 flex flex-col gap-8 rounded">
-        <strong className="text-3xl font-bold">Signup</strong>
+        <strong className="text-3xl font-bold text-center">Signup</strong>
         <div className="flex flex-col gap-6">
         <input
           type="text"
