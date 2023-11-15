@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addNewUser } from "../../redux/actions/signUpAction" ;
-import  validateForm  from '../formsValidation.js/validateForm'
+import  validateForm  from '../formsValidation/validateForm'
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
