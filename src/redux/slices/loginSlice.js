@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: null,
+  loginSuccessMessage: null,
   isAuthenticated: false,
-  error: null,
+  loginError: null,
 };
 
 const loginSlice = createSlice({
@@ -12,22 +12,20 @@ const loginSlice = createSlice({
   reducers: {
     loginSuccess: (state, action) => {
       state.isAuthenticated = true;
-      state.user = action.payload;
-      state.error = null;
+      state.loginSuccessMessage = action.payload;
+      state.loginError = null;
     },
     loginFailure: (state, action) => {
       state.isAuthenticated = false;
-      state.user = null;
-      state.error = action.payload;
-    },
-    logout: (state) => {
-      state.isAuthenticated = false;
-      state.user = null;
-      state.error = null;
+      state.loginSuccessMessage = null;
+      if (action.payload === 'Request failed with status code 401') {
+        state.loginError = 'Invalid inputs!';
+      }
+      console.log(state.loginError)
     },
   },
 });
 
-export const { loginSuccess, loginFailure, logout } = loginSlice.actions;
+export const { loginSuccess, loginFailure } = loginSlice.actions;
 
 export default loginSlice.reducer;
