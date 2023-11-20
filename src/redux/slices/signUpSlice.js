@@ -2,12 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 import { addNewUser } from '../actions/signUpAction'
 
 const initialState = {
-  usersList: [],
   loading: true,
+  signUpMessage: null,
+  signUpError: null
 };
 
-const usersSlice = createSlice({
-  name: 'users',
+const signUpSlice = createSlice({
+  name: 'signUp',
   initialState,
 
   
@@ -17,14 +18,15 @@ const usersSlice = createSlice({
       .addCase(addNewUser.pending, (state) => {
         state.loading = true;
       })
-      .addCase(addNewUser.fulfilled, (state) => {
+      .addCase(addNewUser.fulfilled, (state, action) => {
         state.loading = false;
+        state.signUpMessage = action.payload
       })
-      .addCase(addNewUser.rejected, (state) => {
-        state.loading = false;
+      .addCase(addNewUser.rejected, (state, action) => {
+        state.signUpMessage = action.payload
       })
   },
 });
 
-export default usersSlice.reducer;
-export const { addUser } = usersSlice.actions;
+export default signUpSlice.reducer;
+export const { addUser } = signUpSlice.actions;
