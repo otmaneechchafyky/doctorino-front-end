@@ -1,28 +1,59 @@
-import React from 'react'
-import { logout } from '../redux/slices/loginSlice'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { logoutUser } from '../redux/actions/logoutAction';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUser } from '../redux/actions/currentUserAction';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const currentUser = useSelector((state) => state.currentUser.userData);
+  const status = useSelector((state) => state.currentUser.status);
+  const error = useSelector((state) => state.currentUser.error);
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch]);
+
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
+
+  if (status === 'failed') {
+    return <div>Error: {error}</div>;
+  }
+
   const handleLogout = () => {
-    dispatch(logout());
-    toast.success("You Logged out sucessfully.", {
+    dispatch(logoutUser());
+    toast.success('You Logged out successfully.', {
       position: toast.POSITION.TOP_LEFT,
     });
     setTimeout(() => {
       navigate('/');
     }, 2000);
-  }
+  };
+
   return (
     <div>
-      <button type='button' onClick={handleLogout}>Logout</button>
+      <button type="button" onClick={handleLogout}>
+        Logout
+      </button>
+      <br />
+      <div>
+      {currentUser && (
+        <div>
+          <p>User Name: {currentUser.userName}</p>
+          <p>Email: {currentUser.email}</p>
+          <p>Created Date: {currentUser.created_date}</p>
+        </div>
+      )}
+    </div>
       <ToastContainer />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

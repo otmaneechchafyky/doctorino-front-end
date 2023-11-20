@@ -1,5 +1,5 @@
 // Login.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/actions/loginAction';
 import { loginSuccess, loginFailure } from '../../redux/slices/loginSlice';
@@ -28,7 +28,7 @@ const Login = () => {
     try {
       const user = await loginUser(formData);
       dispatch(loginSuccess(user));
-      toast.success("You Logged in sucessfully.", {
+      toast.success('You Logged in sucessfully.', {
         position: toast.POSITION.TOP_LEFT,
       });
       setTimeout(() => {
@@ -36,7 +36,7 @@ const Login = () => {
       }, 2000);
     } catch (error) {
       dispatch(loginFailure(error.message));
-      toast.error("Uncorrect email or password!", {
+      toast.error('Invalid inputs', {
         position: toast.POSITION.TOP_LEFT,
       });
     }
