@@ -29,7 +29,7 @@ const Login = () => {
       const user = await loginUser(formData);
       dispatch(loginSuccess(user));
       toast.success('You Logged in sucessfully.', {
-        position: toast.POSITION.TOP_LEFT,
+        position: toast.POSITION.TOP_CENTER,
       });
       setTimeout(() => {
         navigate('/home');
@@ -37,7 +37,7 @@ const Login = () => {
     } catch (error) {
       dispatch(loginFailure(error.message));
       toast.error('Invalid inputs', {
-        position: toast.POSITION.TOP_LEFT,
+        position: toast.POSITION.TOP_CENTER,
       });
     }
   };

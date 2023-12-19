@@ -40,7 +40,7 @@ const SignupForm = () => {
         });
       }
     } else toast.error('Please implement all fields', {
-      position: toast.POSITION.TOP_LEFT,
+      position: toast.POSITION.TOP,
     });
   };
 
