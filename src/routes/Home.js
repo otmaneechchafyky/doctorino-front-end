@@ -1,6 +1,7 @@
 import { logoutUser } from '../redux/actions/logoutAction';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from '../redux/actions/currentUserAction';
 import { ToastContainer, toast } from 'react-toastify';
@@ -38,6 +39,11 @@ const Home = () => {
 
   return (
     <div>
+      <ul>
+        <Link to='animals'>Animals</Link>
+        <Link to='vets'>Vets</Link>
+        <Link to='appointments'>Appointments</Link>
+      </ul>
       <button type="button" onClick={handleLogout}>
         Logout
       </button>
