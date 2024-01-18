@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../redux/actions/currentUserAction";
 import { ToastContainer, toast } from "react-toastify";
+import { IoMdHome } from "react-icons/io";
+import { FaUserDoctor } from "react-icons/fa6";
+import { AiFillCalendar } from "react-icons/ai";
+import { IoIosAddCircleOutline } from "react-icons/io";
+import { MdLogout } from "react-icons/md";
 import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
@@ -40,11 +45,12 @@ const Home = () => {
   return (
     <div className="flex w-full h-screen">
       <nav className="bg-cyan-300 w-[10%]">
-        <Link to="animals">Animals</Link>
-        <Link to="vets">Vets</Link>
-        <Link to="appointments">Appointments</Link>
+        <Link to="animals"><IoMdHome className="w-[5rem] h-[5rem]" /></Link>
+        <Link to="vets"><FaUserDoctor className="w-[5rem] h-[5rem]" /></Link>
+        <Link to="appointments"><AiFillCalendar className="w-[5rem] h-[5rem]" /></Link>
+        <Link to='/new_appointment'><IoIosAddCircleOutline className="w-[5rem] h-[5rem]" /></Link>
         <button type="button" onClick={handleLogout}>
-          Logout
+          <MdLogout className="w-[5rem] h-[5rem]" />
         </button>
       </nav>
       <div className="bg-indigo-700 flex flex-col w-[90%]">
