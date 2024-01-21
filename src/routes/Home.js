@@ -11,7 +11,6 @@ import { AiFillCalendar } from "react-icons/ai";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { MdLogout } from "react-icons/md";
 import "react-toastify/dist/ReactToastify.css";
-import userIcon from "../assets/user_icon.png";
 import choper from "../assets/doctorino.png";
 
 const Home = () => {
@@ -47,8 +46,8 @@ const Home = () => {
   return (
     <div className="flex w-full h-screen">
       <nav className="bg-teal-400 w-[20%] flex flex-col gap-6">
-        <div className="w-full flex items-center justify-center">
-        <img src={choper} alt="Choper" className="w-48 h-48"/>
+        <div className="w-full flex justify-center">
+            <img src={choper} alt="Choper" className="w-48 h-48"/>
         </div>
         <div className="flex flex-col">
           <Link to="animals" className="group cursor-pointer hover:bg-teal-300 p-2">
@@ -84,14 +83,13 @@ const Home = () => {
           </li>
         </div>
       </nav>
-      <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400">
-        <header className="">
+      <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
+        <header className="flex justify-end py-4 pr-4">
           {currentUser && (
-            <div>
-              <p>User Name: {currentUser.userName}</p>
-              <p>Email: {currentUser.email}</p>
-              <img className="w-8" src={userIcon} alt="User Icon" />
-            </div>
+            <button type="button" className="flex gap-4 bg-teal-400 p-2 rounded">
+              <p className="font-bold text-slate-900">{currentUser.userName}</p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="text-slate-900" d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+            </button>
           )}
         </header>
         <div className="h-screen">home</div>
