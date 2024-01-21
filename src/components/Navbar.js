@@ -36,7 +36,7 @@ const Navbar = () => {
               <span className="text-lg font-bold text-slate-800 group-hover:text-slate-900 group-hover:text-slate-900">Home</span>
             </li>
           </Link>
-          <Link to="vets" className="group cursor-pointer hover:bg-teal-300 p-2">
+          <Link to="/home/vets" className="group cursor-pointer hover:bg-teal-300 p-2">
             <li className="list-none flex flex-row gap-2 justify-content items-center">
               <FaUserDoctor className="w-[3rem] h-[3rem] text-slate-800 group-hover:text-slate-900" />
               <span className="text-lg font-bold text-slate-800 group-hover:text-slate-900">Vets</span>
