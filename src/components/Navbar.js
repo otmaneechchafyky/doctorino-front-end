@@ -30,7 +30,7 @@ const Navbar = () => {
             <img src={choper} alt="Choper" className="w-48 h-48"/>
         </div>
         <div className="flex flex-col">
-          <Link to="animals" className="group cursor-pointer hover:bg-teal-300 p-2">
+          <Link to="/home/animals" className="group cursor-pointer hover:bg-teal-300 p-2">
             <li className="list-none flex flex-row gap-2 justify-content items-center">
               <IoMdHome className="w-[3rem] h-[3rem] text-slate-800 group-hover:text-slate-900 group-hover:text-slate-900" />
               <span className="text-lg font-bold text-slate-800 group-hover:text-slate-900 group-hover:text-slate-900">Home</span>
@@ -42,7 +42,7 @@ const Navbar = () => {
               <span className="text-lg font-bold text-slate-800 group-hover:text-slate-900">Vets</span>
             </li>
           </Link>
-          <Link to="appointments" className="group cursor-pointer hover:bg-teal-300 p-2">
+          <Link to="/home/appointments" className="group cursor-pointer hover:bg-teal-300 p-2">
             <li className="list-none flex flex-row gap-2 justify-content items-center">
               <AiFillCalendar className="w-[3rem] h-[3rem] text-slate-800 group-hover:text-slate-900" />
               <span className="text-lg font-bold text-slate-800 group-hover:text-slate-900">Appointments</span>
