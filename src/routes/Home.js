@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "../redux/actions/currentUserAction";
 import Navbar from "../components/Navbar"
 import Header from "../components/Header"
 import "react-toastify/dist/ReactToastify.css";
