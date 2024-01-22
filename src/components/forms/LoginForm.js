@@ -32,7 +32,7 @@ const Login = () => {
         position: toast.POSITION.TOP_CENTER,
       });
       setTimeout(() => {
-        navigate('/home');
+        navigate('/home/animals');
       }, 2000);
     } catch (error) {
       dispatch(loginFailure(error.message));
