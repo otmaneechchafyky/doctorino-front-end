@@ -8,7 +8,6 @@ import Header from "../components/Header";
 const Animals = () => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.currentUser.status);
-  const error = useSelector((state) => state.currentUser.error);
 
   useEffect(() => {
     dispatch(fetchAnimal());
