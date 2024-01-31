@@ -3,8 +3,7 @@ import { fetchUser } from "../actions/currentUserAction";
 
 const initialState = {
   userData: null,
-  status: "idle",
-  error: null,
+  status: "null",
 };
 
 const userSlice = createSlice({
@@ -16,17 +15,14 @@ const userSlice = createSlice({
       .addCase(fetchUser.pending, (state) => {
         state.userData = null;
         state.status = "loading";
-        state.error = null;
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.userData = action.payload;
-        state.error = null;
       })
-      .addCase(fetchUser.rejected, (state, action) => {
+      .addCase(fetchUser.rejected, (state) => {
         state.userData = null;
         state.status = "failed";
-        state.error = null;
       });
   },
 });
