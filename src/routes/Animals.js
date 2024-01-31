@@ -13,25 +13,12 @@ const Animals = () => {
     dispatch(fetchAnimal());
   }, [dispatch]);
 
-  if (status === "loading") {
-    return (
-      <div className="flex w-full h-screen">
-        <Navbar />
-        <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
-          <Header />
-          <p>Loading ..</p>
-        </div>
-      </div>
-    );
-  }
-
   if (status === "failed") {
     return (
       <div className="flex w-full h-screen">
         <Navbar />
         <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
-          <Header />
-          <p>Loading ..</p>
+          <p>Something is wrong ..</p>
         </div>
       </div>
     );
@@ -41,7 +28,7 @@ const Animals = () => {
     <div className="flex w-full h-screen">
       <Navbar />
       <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
-        <Header />
+        <Header title="Animals"/>
         <Link to="/new_animal">Add Animal</Link>
       </div>
     </div>

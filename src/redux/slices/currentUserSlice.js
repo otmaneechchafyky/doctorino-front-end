@@ -3,7 +3,7 @@ import { fetchUser } from "../actions/currentUserAction";
 
 const initialState = {
   userData: null,
-  status: "null",
+  status: "",
 };
 
 const userSlice = createSlice({

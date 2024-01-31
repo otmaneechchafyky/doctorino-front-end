@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../redux/actions/currentUserAction";
 
-const Header = () => {
+const Header = (props) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser.userData);
 
@@ -13,7 +13,8 @@ const Header = () => {
 
   return (
     <div>
-      <header className="flex justify-end py-4 pr-4">
+      <header className="flex justify-between p-4">
+        <h1 className=''>{props.title}</h1>
           {currentUser && (
             <button type="button" className="flex gap-4 bg-teal-400 p-2 rounded">
               <p className="font-bold text-slate-900">{currentUser.userName}</p>
