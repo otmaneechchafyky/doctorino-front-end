@@ -9,6 +9,7 @@ const Animals = () => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.currentUser.status);
   const animals = useSelector((state) => state.animals.animalData);
+  const animalsStatus = useSelector((state) => state.animals.status);
 
   useEffect(() => {
     dispatch(fetchAnimal());
@@ -20,6 +21,18 @@ const Animals = () => {
         <Navbar />
         <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
           <p>Something is wrong ..</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (animalsStatus === "loading") {
+    return (
+      <div className="flex w-full h-screen">
+        <Navbar />
+        <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
+        <Header title="Animals"/>
+        <p className="flex items-center justify-center h-[100%]">Loading ...</p>
         </div>
       </div>
     );
