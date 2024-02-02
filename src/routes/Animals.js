@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchAnimal } from "../redux/actions/animalActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,15 +7,34 @@ import Header from "../components/Header";
 
 const Animals = () => {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.currentUser.status);
+  const currentUser = useSelector((state) => state.currentUser);
   const animals = useSelector((state) => state.animals.animalData);
   const animalsStatus = useSelector((state) => state.animals.status);
+  const allAnimals = animals ? Object.keys(animals) : [];
+  const [myAnimals, setMyAnimals] = useState(allAnimals);
+  const [magicWord, setMagicWord] = useState("Only my animals");
+
+  const filterMyAnimals = () => {
+    let filteredAnimals = [];
+    if (magicWord === "Only my animals") {
+      filteredAnimals = allAnimals.filter((key) => {
+        return animals[key].animal_owner.userName === currentUser.userData.userName;
+      });
+      setMyAnimals(filteredAnimals);
+      setMagicWord("All animals");
+    } else {
+      filteredAnimals = allAnimals;
+      setMyAnimals(filteredAnimals);
+      setMagicWord("Only my animals");
+      return filteredAnimals;
+    }
+  }
 
   useEffect(() => {
     dispatch(fetchAnimal());
   }, [dispatch]);
 
-  if (status === "failed") {
+  if (currentUser.status === "failed") {
     return (
       <div className="flex w-full h-screen">
         <Navbar />
@@ -43,10 +62,11 @@ const Animals = () => {
       <Navbar />
       <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
         <Header title="Animals"/>
+        <button type="button" onClick={filterMyAnimals}>{magicWord}</button>
         <ul>
-        {animals && Object.keys(animals).map((key) => (
+        {myAnimals.map((key) => (
             <li key={key}>
-              <img src={animals[key].data.animal_photo} alt="Animal photo" />
+              <img src={animals[key].data.animal_photo} alt="something" />
               <p>{animals[key].data.name}</p>
               <p>{animals[key].data.date_of_birth}</p>
               <p>{animals[key].data.escape_attempts}</p>
@@ -55,7 +75,6 @@ const Animals = () => {
           ))}
         </ul>
         <Link to="/new_animal">Add Animal</Link>
-
       </div>
     </div>
   );
