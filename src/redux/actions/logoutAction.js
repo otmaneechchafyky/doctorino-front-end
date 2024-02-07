@@ -5,7 +5,7 @@ export const logoutUser = () => {
     try {
       const authToken = localStorage.getItem('authToken');
 
-      const response = await axios.delete('http://127.0.0.1:4000/logout', {
+      const response = await axios.delete('https://doctorinoapi.onrender.com/logout', {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },
