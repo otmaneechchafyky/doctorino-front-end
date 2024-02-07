@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const fetchAnimal = createAsyncThunk("user/fetchAnimal", async () => {
     const authToken = localStorage.getItem('authToken');
-  const response = await axios.get("http://127.0.0.1:4000/animals", {
+  const response = await axios.get("https://doctorinoapi.onrender.com/animals", {
     headers: {
       Authorization: `Bearer ${authToken}`,
     },
