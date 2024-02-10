@@ -7,7 +7,9 @@ import Header from "../components/Header";
 
 const Animals = () => {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.currentUser.status);
+  // const currentUser = useSelector((state) => state.currentUser.userData)
+  const status = useSelector((state) => state.animalsData.status);
+  const animalsList = useSelector((state) => state.animalsData.animalsArray);
 
   useEffect(() => {
     dispatch(fetchAnimal());
@@ -31,7 +33,7 @@ const Animals = () => {
         <Navbar />
         <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
           <Header />
-          <p>Loading ..</p>
+          <p>Something went wrong..</p>
         </div>
       </div>
     );
@@ -42,6 +44,20 @@ const Animals = () => {
       <Navbar />
       <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
         <Header />
+        <ul>
+          {animalsList &&
+            animalsList.map((animal) => (
+              <li key={animal.id}>
+                  <img src={animal.animal_photo} alt="Animal"/>
+                  <p>Name: {animal.name}</p>
+                  <p>date_of_birth: {animal.date_of_birth}</p>
+                  <p>weight: {animal.weight}</p>
+                  <p>escape_attempts: {animal.escape_attempts}</p>
+                  <p>genre_id: {animal.genre_id}</p>
+                  <p>owner_id: {animal.owner_id}</p>
+              </li>
+            ))}
+        </ul>
         <Link to="/new_animal">Add Animal</Link>
       </div>
     </div>
