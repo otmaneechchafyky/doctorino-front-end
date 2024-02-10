@@ -1,10 +1,9 @@
 import axios from 'axios';
-
-const API_BASE_URL = 'https://doctorinoapi.onrender.com';
+import { apiUrl } from './apiURL'
 
 export const loginUser = async (formData) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/login`, {
+    const response = await axios.post(`${apiUrl}/login`, {
       user: formData,
     });
 
@@ -13,11 +12,7 @@ export const loginUser = async (formData) => {
       throw new Error(errorData.message || 'Login failed');
     }
 
-    const token = response.data.token;
-
-    localStorage.setItem('authToken', token);
-    console.log(response.data.status.message)
-    return response.data.status.message;
+    return response.data.data;
   } catch (error) {
     throw error;
   }
