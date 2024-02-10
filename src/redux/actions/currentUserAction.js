@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { apiURL } from "./URL";
 
 export const fetchUser = createAsyncThunk("user/fetchUser", async () => {
     const authToken = localStorage.getItem('authToken');
-  const response = await axios.get("http://127.0.0.1:4000/current_user", {
+  const response = await axios.get(`${apiURL}/current_user`, {
     headers: {
       Authorization: `Bearer ${authToken}`,
     },
   });
-  return response.data.data;
+  return response.data;
 });
