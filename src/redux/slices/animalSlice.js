@@ -18,6 +18,7 @@ const animalSlice = createSlice({
       .addCase(fetchAnimal.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.animalsArray = action.payload;
+        console.log(state.animalsArray)
       })
       .addCase(fetchAnimal.rejected, (state) => {
         state.animalsArray = null;
