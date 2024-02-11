@@ -1,21 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchAnimal } from "../redux/actions/animalActions";
+import { fetchGenre } from "../redux/actions/genreActions";
+import { fetchUser } from "../redux/actions/currentUserAction"
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
+import { IoMdAdd } from "react-icons/io";
+import { IoFilterSharp } from "react-icons/io5";
+import { CiSearch } from "react-icons/ci";
 
 const Animals = () => {
   const dispatch = useDispatch();
-  // const currentUser = useSelector((state) => state.currentUser.userData)
-  const status = useSelector((state) => state.animalsData.status);
+  const currentUser = useSelector((state) => state.currentUser.userData);
+  const statusAnimal = useSelector((state) => state.animalsData.status);
   const animalsList = useSelector((state) => state.animalsData.animalsArray);
+  const genresList = useSelector((state) => state.genresData.genresArray);
+  const statusGenre = useSelector((state) => state.genresData.status);
+
+  const [filteredAnimalsList, setFilteredAnimalsList] = useState(animalsList);
 
   useEffect(() => {
     dispatch(fetchAnimal());
+    dispatch(fetchGenre());
   }, [dispatch]);
 
-  if (status === "loading") {
+  const [filterTitle, setFilterTitle] = useState("Only your animals");
+
+  const filterMyAnimals = () => {
+    console.log(currentUser.userName);
+    if (filterTitle === "Only your animals") {
+      const filteredList = animalsList.filter(
+        (animal) => animal.owner_id === currentUser.id
+      );
+      setFilterTitle("All animals");
+      setFilteredAnimalsList(filteredList);
+    } else {
+      setFilterTitle("Only your animals");
+      setFilteredAnimalsList(animalsList);
+    }
+  };
+
+  if (statusAnimal === "loading" || statusGenre === "loading") {
     return (
       <div className="flex w-full h-screen">
         <Navbar />
@@ -27,7 +53,7 @@ const Animals = () => {
     );
   }
 
-  if (status === "failed") {
+  if (statusAnimal === "failed" || statusGenre === "failed") {
     return (
       <div className="flex w-full h-screen">
         <Navbar />
@@ -42,23 +68,78 @@ const Animals = () => {
   return (
     <div className="flex w-full h-screen">
       <Navbar />
-      <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
-        <Header />
-        <ul>
-          {animalsList &&
-            animalsList.map((animal) => (
-              <li key={animal.id}>
-                  <img src={animal.animal_photo} alt="Animal"/>
-                  <p>Name: {animal.name}</p>
-                  <p>date_of_birth: {animal.date_of_birth}</p>
-                  <p>weight: {animal.weight}</p>
-                  <p>escape_attempts: {animal.escape_attempts}</p>
-                  <p>genre_id: {animal.genre_id}</p>
-                  <p>owner_id: {animal.owner_id}</p>
+      <div className="bg-slate-900 flex flex-col gap-4 w-[80%] text-teal-400 text-white">
+        <Header title="Animals" />
+        <div className="w-[80%] flex self-center justify-between">
+          <div className="flex w-[42%] gap-2">
+            <Link
+              to="/new_animal"
+              className="w-[45%] group flex items-center justify-center gap-2 p-4 bg-green-500 rounded hover:bg-green-600"
+            >
+              <IoMdAdd className="w-7 h-7" />
+              <span>Add Animal</span>
+            </Link>
+            <button
+              type="button"
+              className="w-[55%] group flex items-center justify-center gap-2 p-4 bg-sky-500 rounded hover:bg-sky-600"
+              onClick={filterMyAnimals}
+            >
+              <IoFilterSharp className="w-7 h-7" />
+              <span>{filterTitle}</span>
+            </button>
+          </div>
+          <div className="border rounded overflow-hidden flex w-[57%]">
+            <input
+              type="text"
+              className="px-4 py-2 w-[87%] text-slate-900 outline-0"
+              placeholder="Search by name..."
+            />
+            <button className="flex items-center justify-center px-4 border-l w-[13%] hover:bg-slate-800">
+              <CiSearch className="w-7 h-7" />
+            </button>
+          </div>
+        </div>
+        {filteredAnimalsList && filteredAnimalsList.length > 0 ? (
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 px-4 overflow-auto">
+            {filteredAnimalsList.map((animal) => (
+              <li
+                key={animal.id}
+                className="bg-slate-600 rounded-xl flex flex-col"
+              >
+                <img
+                  src={animal.animal_photo}
+                  alt="Animal"
+                  className="w-full rounded-xl rounded-b-none"
+                />
+                <div className="flex items-center rounded-xl rounded-t-none bg-teal-500">
+                  <p className="w-[50%] p-4 text-left font-semibold text-lg">
+                    {animal.name}
+                  </p>
+                  <hr className=" w-[2px] h-8 bg-white rounded-xl" />
+                  {genresList &&
+                    genresList.map((element) => {
+                      if (element.id === animal.genre_id) {
+                        return (
+                          <p
+                            key={element.id}
+                            className="w-[50%] text-slate-900 p-4 text-right font-semibold text-lg"
+                          >
+                            {element.name}
+                          </p>
+                        );
+                      }
+                    })}
+                </div>
               </li>
             ))}
-        </ul>
-        <Link to="/new_animal">Add Animal</Link>
+          </ul>
+        ) : (
+          <p className="text-white text-center mt-4">
+            {filterTitle === "Only your animals"
+              ? "There are no animals yet."
+              : "You have no animals yet."}
+          </p>
+        )}
       </div>
     </div>
   );
