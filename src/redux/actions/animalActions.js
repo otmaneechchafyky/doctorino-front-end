@@ -9,6 +9,6 @@ export const fetchAnimal = createAsyncThunk("user/fetchAnimal", async () => {
       Authorization: `Bearer ${authToken}`,
     },
   });
-  console.log(response.data)
+  // console.log(response.data)
   return response.data;
 });
