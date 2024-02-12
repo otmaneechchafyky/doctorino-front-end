@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchAnimal } from "../redux/actions/animalActions";
 import { fetchGenre } from "../redux/actions/genreActions";
-import { fetchUser } from "../redux/actions/currentUserAction"
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
@@ -25,20 +24,35 @@ const Animals = () => {
     dispatch(fetchGenre());
   }, [dispatch]);
 
+  useEffect(() => {
+    setFilteredAnimalsList(animalsList);
+  }, [animalsList]);
+
   const [filterTitle, setFilterTitle] = useState("Only your animals");
 
   const filterMyAnimals = () => {
-    console.log(currentUser.userName);
+    console.log(currentUser?.userName);
     if (filterTitle === "Only your animals") {
-      const filteredList = animalsList.filter(
-        (animal) => animal.owner_id === currentUser.id
-      );
       setFilterTitle("All animals");
-      setFilteredAnimalsList(filteredList);
+      setFilteredAnimalsList((prevList) => {
+        const filteredList = prevList.filter(
+          (animal) => animal.owner_id === currentUser?.id
+        );
+        return filteredList;
+      });
     } else {
       setFilterTitle("Only your animals");
       setFilteredAnimalsList(animalsList);
     }
+  };
+
+  const [searchInput, setSearchInput] = useState("")
+
+  const searchAnimal = () => {
+    const searchedAnimals = animalsList.filter(
+      (animal) => animal.name.toLowerCase().includes(searchInput.toLowerCase()) || animal.name.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setFilteredAnimalsList(searchedAnimals);
   };
 
   if (statusAnimal === "loading" || statusGenre === "loading") {
@@ -93,8 +107,9 @@ const Animals = () => {
               type="text"
               className="px-4 py-2 w-[87%] text-slate-900 outline-0"
               placeholder="Search by name..."
+              onChange={(e) => setSearchInput(e.target.value)}
             />
-            <button className="flex items-center justify-center px-4 border-l w-[13%] hover:bg-slate-800">
+            <button className="flex items-center justify-center px-4 border-l w-[13%] hover:bg-slate-800" onClick={searchAnimal}>
               <CiSearch className="w-7 h-7" />
             </button>
           </div>
@@ -112,7 +127,7 @@ const Animals = () => {
                   className="w-full rounded-xl rounded-b-none"
                 />
                 <div className="flex items-center rounded-xl rounded-t-none bg-teal-500">
-                  <p className="w-[50%] p-4 text-left font-semibold text-lg">
+                  <p className="w-[50%] p-4 text-left text-lg">
                     {animal.name}
                   </p>
                   <hr className=" w-[2px] h-8 bg-white rounded-xl" />
@@ -122,7 +137,7 @@ const Animals = () => {
                         return (
                           <p
                             key={element.id}
-                            className="w-[50%] text-slate-900 p-4 text-right font-semibold text-lg"
+                            className="w-[50%] text-slate-900 p-4 text-right text-lg"
                           >
                             {element.name}
                           </p>
