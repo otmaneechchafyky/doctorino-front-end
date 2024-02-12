@@ -18,6 +18,8 @@ const Animals = () => {
   const statusGenre = useSelector((state) => state.genresData.status);
 
   const [filteredAnimalsList, setFilteredAnimalsList] = useState(animalsList);
+  const [filterTitle, setFilterTitle] = useState("Only your animals");
+  const [searchInput, setSearchInput] = useState("")
 
   useEffect(() => {
     dispatch(fetchAnimal());
@@ -27,8 +29,6 @@ const Animals = () => {
   useEffect(() => {
     setFilteredAnimalsList(animalsList);
   }, [animalsList]);
-
-  const [filterTitle, setFilterTitle] = useState("Only your animals");
 
   const filterMyAnimals = () => {
     console.log(currentUser?.userName);
@@ -45,8 +45,6 @@ const Animals = () => {
       setFilteredAnimalsList(animalsList);
     }
   };
-
-  const [searchInput, setSearchInput] = useState("")
 
   const searchAnimal = () => {
     const searchedAnimals = animalsList.filter(
