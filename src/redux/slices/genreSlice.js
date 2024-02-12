@@ -18,7 +18,6 @@ const genreSlice = createSlice({
       .addCase(fetchGenre.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.genresArray = action.payload;
-        console.log(state.genresArray)
       })
       .addCase(fetchGenre.rejected, (state) => {
         state.genresArray = null;
