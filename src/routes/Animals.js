@@ -59,7 +59,7 @@ const Animals = () => {
         <Navbar />
         <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
           <Header />
-          <p>Loading ..</p>
+          <p className="w-full flex items-center justify-center text-2xl text-ceter">Loading...</p>
         </div>
       </div>
     );
