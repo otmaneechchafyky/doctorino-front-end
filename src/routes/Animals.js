@@ -113,18 +113,19 @@ const Animals = () => {
           </div>
         </div>
         {filteredAnimalsList && filteredAnimalsList.length > 0 ? (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 px-4 overflow-auto">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 p-4 overflow-auto">
             {filteredAnimalsList.map((animal) => (
               <li
                 key={animal.id}
-                className="bg-slate-600 rounded-xl flex flex-col"
+                className="rounded-xl flex flex-col"
               >
+                <Link to={`/home/animal/${animal.id}`} className="cursor-pointer">
                 <img
                   src={animal.animal_photo}
                   alt="Animal"
                   className="w-full rounded-xl rounded-b-none"
                 />
-                <div className="flex items-center rounded-xl rounded-t-none bg-teal-500">
+                <div className="flex items-center rounded-xl rounded-t-none bg-slate-800">
                   <p className="w-[50%] p-4 text-left text-lg">
                     {animal.name}
                   </p>
@@ -135,14 +136,15 @@ const Animals = () => {
                         return (
                           <p
                             key={element.id}
-                            className="w-[50%] text-slate-900 p-4 text-right text-lg"
+                            className="w-[50%] text-teal-300 p-4 text-right text-lg"
                           >
                             {element.name}
                           </p>
                         );
-                      }
+                      } return null
                     })}
                 </div>
+                </Link>
               </li>
             ))}
           </ul>
