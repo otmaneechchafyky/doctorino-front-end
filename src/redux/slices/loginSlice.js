@@ -21,7 +21,6 @@ const loginSlice = createSlice({
       if (action.payload === 'Request failed with status code 401') {
         state.loginError = 'Invalid inputs!';
       }
-      console.log(state.loginError)
     },
   },
 });
