@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAnimal } from "../actions/animalActions";
+import { fetchAnimal, deleteAnimal } from "../actions/animalActions";
 
 const initialState = {
   animalsArray: null,
@@ -18,11 +18,20 @@ const animalSlice = createSlice({
       .addCase(fetchAnimal.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.animalsArray = action.payload;
-        console.log(state.animalsArray)
       })
       .addCase(fetchAnimal.rejected, (state) => {
         state.animalsArray = null;
         state.status = "failed";
+      })
+      .addCase(deleteAnimal.pending, (state) => {
+      })
+      .addCase(deleteAnimal.fulfilled, (state, action) => {
+        state.animalsArray = state.animalsArray.filter(
+          (animal) => animal.id !== action.payload.deletedAnimalId
+        );
+      })
+      .addCase(deleteAnimal.rejected, (action) => {
+        console.error("Error deleting animal", action.error.message);
       });
   },
 });
