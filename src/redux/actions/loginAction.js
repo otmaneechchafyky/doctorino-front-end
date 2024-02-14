@@ -15,7 +15,6 @@ export const loginUser = async (formData) => {
     const token = response.data.token;
 
     localStorage.setItem('authToken', token);
-    console.log(response.data.status.message)
     return response.data.status.message;
   } catch (error) {
     throw error;
