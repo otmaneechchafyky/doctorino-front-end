@@ -4,6 +4,8 @@ import { addAnimal } from "../../redux/actions/animalActions";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../../components/Navbar";
 import Header from "../../components/Header";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const NewAnimal = () => {
   const dispatch = useDispatch();
@@ -35,16 +37,26 @@ const NewAnimal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addAnimal(animalData));
-    setAnimalData({
-      name: "",
-      animal_photo: "",
-      date_of_birth: "",
-      weight: "",
-      escape_attempts: "",
-      genre_id: "",
-      owner_id: "",
-    });
+    dispatch(addAnimal(animalData))
+    .then(() => {
+      toast.success("Animal added successfylly", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+        setAnimalData({
+          name: "",
+          animal_photo: "",
+          date_of_birth: "",
+          weight: "",
+          escape_attempts: "",
+          genre_id: "",
+          owner_id: currentUser?.id || "",
+        });
+    })
+    .catch(() => {
+      toast.error("Could not add animal", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    })
   };
 
   if (statusGenre === "loading") {
@@ -165,6 +177,7 @@ const NewAnimal = () => {
           </button>
         </form>
       </div>
+      <ToastContainer autoClose={1000} />
     </div>
   );
 };
