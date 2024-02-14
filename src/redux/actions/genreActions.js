@@ -9,6 +9,5 @@ export const fetchGenre = createAsyncThunk("user/fetchGenre", async () => {
       Authorization: `Bearer ${authToken}`,
     },
   });
-  // console.log(response.data)
   return response.data;
 });
