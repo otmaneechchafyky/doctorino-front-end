@@ -13,7 +13,6 @@ export const logoutUser = () => {
       });
 
       localStorage.removeItem('authToken');
-      console.log(response.data.message)
       return response.data;
     } catch (error) {
       console.error('Logout failed:', error);
