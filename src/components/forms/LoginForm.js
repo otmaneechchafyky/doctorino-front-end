@@ -1,8 +1,8 @@
 // Login.js
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../redux/actions/loginAction';
-import { loginSuccess, loginFailure } from '../../redux/slices/loginSlice';
+import { loginUser } from '../../redux/actions/auth/loginAction';
+import { loginSuccess, loginFailure } from '../../redux/slices/authSlices/loginSlice';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
