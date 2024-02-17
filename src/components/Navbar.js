@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import { logoutUser } from "../redux/actions/logoutAction";
+import { logoutUser } from "../redux/actions/auth/logoutAction";
 import { Link } from "react-router-dom";
 import { IoMdHome } from "react-icons/io";
 import { FaUserDoctor } from "react-icons/fa6";
