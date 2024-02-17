@@ -143,7 +143,7 @@ const Animals = () => {
         {filteredAnimalsList && filteredAnimalsList.length > 0 ? (
           <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 p-4 overflow-auto">
             {filteredAnimalsList.map((animal) => (
-              <li key={animal.id} className="rounded-xl flex flex-col">
+              <li key={animal.id} className="group rounded-xl flex flex-col hover:scale-105 duration-300">
                 <Link
                   to={`/home/animal/${animal.id}`}
                   className="cursor-pointer"
@@ -151,9 +151,9 @@ const Animals = () => {
                   <img
                     src={animal.animal_photo}
                     alt="Animal"
-                    className="w-full rounded-xl rounded-b-none"
+                    className="w-full rounded-xl rounded-b-none h-56"
                   />
-                  <div className="flex items-center rounded-xl rounded-b-none rounded-t-none bg-slate-800 mb-2">
+                  <div className="flex items-center rounded-xl rounded-b-none rounded-t-none bg-slate-800 mb-2 group-hover:bg-slate-700">
                     <p className="w-[50%] p-4 text-left text-lg">
                       {animal.name.length < 9
                         ? animal.name
@@ -180,7 +180,7 @@ const Animals = () => {
                 </Link>
                 <button
                   type="button"
-                  className="flex items-center justify-around gap-2 py-4 px-20 bg-red-600 text-lg rounded-lg hover:bg-red-700 duration-150"
+                  className="flex items-center justify-around gap-2 py-4 px-20 bg-red-600 text-lg rounded-lg rounded-t-none hover:bg-red-700 duration-300"
                   onClick={() => handleDelete(animal.id)}
                 >
                   <MdDelete className="text-xl" />
