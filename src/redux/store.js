@@ -6,6 +6,7 @@ import animalReducer from './slices/animalSlice'
 import genreReducer  from "./slices/genreSlice";
 import vetReducer from "./slices/vetSlice";
 import specializationReducer from './slices/specializationSlice';
+import appointmentReducer from './slices/appointmentSlice';
 
 const store = configureStore({
   reducer: {
@@ -15,7 +16,8 @@ const store = configureStore({
     animalsData: animalReducer,
     genresData: genreReducer,
     vetsData: vetReducer,
-    specializationsData: specializationReducer
+    specializationsData: specializationReducer,
+    appointmentsData: appointmentReducer,
   },
 });
 
