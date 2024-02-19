@@ -71,7 +71,7 @@ const VetDetails = () => {
                 </span>
                 <span className="text-slate-400 text-lg">Per visit</span>
               </p>
-              <Link className="text-center bg-sky-600 py-4 text-lg mt-8 rounded-lg hover:bg-sky-700 duration-300">Take an appointment</Link>
+              <Link to="/new_appointment" className="text-center bg-sky-600 py-4 text-lg mt-8 rounded-lg hover:bg-sky-700 duration-300">Take an appointment</Link>
             </div>
             <img
               src={vetDetails.vet_photo}
