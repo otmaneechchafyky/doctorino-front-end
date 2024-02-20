@@ -1,0 +1,22 @@
+/* Add this CSS to your stylesheets */
+.scroll-container {
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent; /* Color of the thumb and track, set to transparent */
+  }
+  
+  /* For Webkit browsers (like Chrome and Safari) */
+  .scroll-container::-webkit-scrollbar {
+    width: 8px; /* Set the width of the scrollbar */
+  }
+  
+  .scroll-container::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Set the color of the thumb */
+  }
+  
+  .scroll-container::-webkit-scrollbar-track {
+    background-color: transparent; /* Set the color of the track */
+  }
+  
