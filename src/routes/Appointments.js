@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAppointments } from "../redux/actions/appointmentActions";
+import { deleteAppointment, fetchAppointments } from "../redux/actions/appointmentActions";
 import { IoMdAdd } from "react-icons/io";
 import { BsCalendar2Date } from "react-icons/bs";
 import { IoMdTime } from "react-icons/io";
@@ -12,6 +12,8 @@ import { fetchAnimal } from "../redux/actions/animalActions";
 import { RxLapTimer } from "react-icons/rx";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Appointments = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,21 @@ const Appointments = () => {
   );
   const animalsList = useSelector((state) => state.animalsData.animalsArray);
   const vetsList = useSelector((state) => state.vetsData.vetsArray);
+
+  const handleDelete = (id) => {
+    dispatch(deleteAppointment(id))
+      .then(() => {
+        dispatch(fetchAppointments());
+        toast.success("Appointment deleted successfylly", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      })
+      .catch(() => {
+        toast.success("Could not delete", {
+          position: toast.POSITION.TOP_RIGHT,
+        });
+      });
+  };
 
   useEffect(() => {
     dispatch(fetchVets());
@@ -126,7 +143,7 @@ const Appointments = () => {
                             <FaLocationDot />
                             {appointment.location}
                             </div>
-                            <MdDelete className="text-red-400 w-6 h-6 cursor-pointer hover:scale-110 duration-300"/>
+                            <MdDelete onClick={() => handleDelete(appointment.id)} className="text-red-400 w-6 h-6 cursor-pointer hover:scale-110 duration-300"/>
                           </div>
                         </div>
                       </div>
@@ -139,6 +156,7 @@ const Appointments = () => {
           )}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
