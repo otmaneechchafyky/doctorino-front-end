@@ -9,7 +9,6 @@ export const fetchAppointments = createAsyncThunk("appointment/fetchappointments
       Authorization: `Bearer ${authToken}`,
     },
   });
-  console.log(response.data)
   return response.data;
 });
 
@@ -23,7 +22,6 @@ export const CreateAppointment = createAsyncThunk(
           Authorization: `Bearer ${authToken}`,
         },       
       });
-      console.log(response.data);
       return response.data;
     } catch (error) {
         console.error("Error Creating an appointment", error.response.data);
