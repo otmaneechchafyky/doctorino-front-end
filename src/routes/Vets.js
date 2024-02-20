@@ -61,7 +61,7 @@ const Vets = () => {
         <ul className="py-6 grid place-items-center grid-cols-4 gap-y-8 overflow-y-scroll">
           {filteredVetsList &&
             filteredVetsList.map((vet) => (
-              <li key={vet.id} className="group flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-800 hover:bg-slate-600 duration-300 hover:scale-105">
+              <li key={vet.id} className="group flex flex-col items-center gap-2 p-4 rounded-lg bg-slate-800 hover:bg-slate-600 duration-300 hover:scale-105 cursor-pointer">
                 <img src={vet.vet_photo} alt={vet.name} className="w-48 rounded-[100%] border border-8 border-slate-700 group-hover:border-slate-500"/>
                 <div className="flex flex-col items-center">
                   <h1 className="text-2xl font-bold">{vet.name}</h1>
@@ -69,7 +69,7 @@ const Vets = () => {
                     specializationsList.map((specialization) => {
                       if (vet.specialization_id === specialization.id){
                         return <p key={specialization.id} className="tracking-wider text-slate-300 group-hover:text-slate-200">{specialization.name}</p>
-                      }
+                      } else return null
                     })}
                 </div>
                 <p className="flex items-center gap-2 text-teal-400 group-hover:text-teal-300"><IoIosPricetag /> <span className="flex gap-1">{vet.fees}<span>DH</span></span> <span className="text-white text-sm">Per visit</span></p>
