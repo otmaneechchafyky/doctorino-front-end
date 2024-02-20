@@ -15,19 +15,24 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="/signup" element={<SignUpForm />} />
-        <Route path="/home/animals" element={<Animals />} />
-        <Route path="/home/animal/:id" element={<Animal />} />
-        <Route path="/home/edit_animal/:id" element={<EditAnimal />} />
-        <Route path="/home/vets" element={<Vets />} />
-        <Route path="/home/appointments" element={<Appointments />} />
-        <Route path="/new_animal" element={<NewAnimal />} />
-        <Route path="/home/vets/:id" element={<VetDetails />} />
-        <Route path="/new_appointment" element={<NewAppointment />} />
-        <Route path="/new_appointment_vet" element={<NewAppointmentVetId />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/home/animals" element={<Animals />} />
+          <Route path="/home/animal/:id" element={<Animal />} />
+          <Route path="/home/edit_animal/:id" element={<EditAnimal />} />
+          <Route path="/home/vets" element={<Vets />} />
+          <Route path="/home/appointments" element={<Appointments />} />
+          <Route path="/new_animal" element={<NewAnimal />} />
+          <Route path="/home/vets/:id" element={<VetDetails />} />
+          <Route path="/new_appointment" element={<NewAppointment />} />
+          <Route
+            path="/new_appointment_vet"
+            element={<NewAppointmentVetId />}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
