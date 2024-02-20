@@ -7,6 +7,7 @@ import Appointments from "./routes/Appointments";
 import NewAnimal from "./components/forms/NewAnimal";
 import VetDetails from "./components/VetDetails";
 import NewAppointment from "./components/forms/NewAppointment";
+import NewAppointmentVetId from "./components/forms/NewAppointmentVetId";
 import EditAnimal from "./components/forms/editAnimal";
 import Animal from "./routes/Animal";
 import "./App.css";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/new_animal" element={<NewAnimal />} />
         <Route path="/home/vets/:id" element={<VetDetails />} />
         <Route path="/new_appointment" element={<NewAppointment />} />
+        <Route path="/new_appointment_vet" element={<NewAppointmentVetId />} />
       </Routes>
     </div>
   );
