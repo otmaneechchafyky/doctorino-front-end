@@ -28,3 +28,21 @@ export const CreateAppointment = createAsyncThunk(
     }
   }
 );
+
+export const deleteAppointment = createAsyncThunk(
+  "animal/deleteAppointment",
+  async (id, { rejectWithValue }) => {
+    try {
+      const authToken = localStorage.getItem("authToken");
+      const response = await axios.delete(`${apiURL}/appointments/${id}`, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      // You can handle errors or simply reject with the error
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
