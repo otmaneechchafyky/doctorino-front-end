@@ -42,7 +42,7 @@ const NewAppointment = () => {
         toast.success("Appointment created successfully", {
           position: toast.POSITION.TOP_CENTER,
         });
-        console.log("Appointment created", response.payload);
+        console.log(response.payload);
         setAppointmentData({
           date: "",
           time: "",
@@ -63,7 +63,7 @@ const NewAppointment = () => {
     <div className="flex w-full h-screen">
       <Navbar />
       <div className="bg-slate-950 flex flex-col gap-2 w-[80%] text-white">
-        <Header title="Vet details" />
+        <Header title="New appointment" />
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-8 mx-auto w-[50%]"
