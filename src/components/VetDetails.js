@@ -26,11 +26,6 @@ const VetDetails = () => {
     dispatch(fetchSpecializations());
   }, [dispatch, vetId]);
 
-  useEffect(() => {
-    console.log(vetDetails);
-    console.log(specializationsList);
-  }, [vetDetails]);
-
   return (
     <div className="flex w-full h-screen">
       <Navbar />
@@ -45,11 +40,11 @@ const VetDetails = () => {
                   specializationsList.map((element) => {
                     if (element.id === vetDetails.specialization_id) {
                       return (
-                        <p className="flex gap-1 text-teal-400">
+                        <p key={element.id} className="flex gap-1 text-teal-400">
                           (<span>{element.name}</span>)
                         </p>
                       );
-                    }
+                    } else return null
                   })}
               </h1>
               <p className="text-lg text-slate-200">{vetDetails.bio}</p>
@@ -71,7 +66,7 @@ const VetDetails = () => {
                 </span>
                 <span className="text-slate-400 text-lg">Per visit</span>
               </p>
-              <Link to="/new_appointment" className="text-center bg-sky-600 py-4 text-lg mt-8 rounded-lg hover:bg-sky-700 duration-300">Take an appointment</Link>
+              <Link to="/new_appointment_vet" className="text-center bg-sky-600 py-4 text-lg mt-8 rounded-lg hover:bg-sky-700 duration-300">Take an appointment</Link>
             </div>
             <img
               src={vetDetails.vet_photo}
