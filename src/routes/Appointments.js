@@ -11,6 +11,7 @@ import { fetchVets } from "../redux/actions/vetActions";
 import { fetchAnimal } from "../redux/actions/animalActions";
 import { RxLapTimer } from "react-icons/rx";
 import { FaLocationDot } from "react-icons/fa6";
+import { MdDelete } from "react-icons/md";
 
 const Appointments = () => {
   const dispatch = useDispatch();
@@ -81,7 +82,7 @@ const Appointments = () => {
                       <div
                         key={appointment.id}
                       >
-                        <Link className="grid grid-cols-6 text-sm hover:bg-slate-600">
+                        <div className="grid grid-cols-6 text-sm hover:bg-slate-600">
                           <div className="p-4 text-slate-200 flex gap-3 items-center">
                             <BsCalendar2Date />
                             <span>{appointment.date}</span>
@@ -120,11 +121,14 @@ const Appointments = () => {
                               </div>
                             )}
                           </div>
-                          <div className="p-4 text-slate-200 flex gap-2 items-center">
+                          <div className="p-4 text-slate-200 flex justify-between items-center">
+                            <div className="flex items-center gap-2">
                             <FaLocationDot />
                             {appointment.location}
+                            </div>
+                            <MdDelete className="text-red-400 w-6 h-6 cursor-pointer hover:scale-110 duration-300"/>
                           </div>
-                        </Link>
+                        </div>
                       </div>
                     );
                   })}
