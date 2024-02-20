@@ -143,7 +143,7 @@ const Appointments = () => {
                             <FaLocationDot />
                             {appointment.location}
                             </div>
-                            <MdDelete onClick={() => handleDelete(appointment.id)} className="text-red-400 w-6 h-6 cursor-pointer hover:scale-110 duration-300"/>
+                            <MdDelete onClick={() => handleDelete(appointment.id)} className="text-red-400 w-6 h-6 cursor-pointer hover:text-red-500 hover:scale-110 duration-300"/>
                           </div>
                         </div>
                       </div>
