@@ -15,7 +15,6 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      {/* <BrowserRouter> */}
         <Routes>
           <Route path="/" element={<LoginForm />} />
           <Route path="/signup" element={<SignUpForm />} />
@@ -32,7 +31,6 @@ function App() {
             element={<NewAppointmentVetId />}
           />
         </Routes>
-      {/* </BrowserRouter> */}
     </div>
   );
 }

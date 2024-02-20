@@ -33,7 +33,6 @@ const EditAnimal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("edit");
     dispatch(editAnimal(animalData))
       .then(() => {
         toast.success("Animal Updated successfylly", {

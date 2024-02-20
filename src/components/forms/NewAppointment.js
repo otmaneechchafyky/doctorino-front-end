@@ -42,7 +42,6 @@ const NewAppointment = () => {
         toast.success("Appointment created successfully", {
           position: toast.POSITION.TOP_CENTER,
         });
-        console.log(response.payload);
         setAppointmentData({
           date: "",
           time: "",
