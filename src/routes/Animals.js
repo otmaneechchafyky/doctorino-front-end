@@ -78,9 +78,9 @@ const Animals = () => {
 
   if (statusAnimal === "loading" || statusGenre === "loading") {
     return (
-      <div className="flex w-full h-screen">
+      <div className="flex flex-col lg:flex-row w-full h-screen">
         <Navbar />
-        <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
+        <div className="bg-slate-900 flex flex-col w-5/5 lg:w-4/5 text-teal-400 text-white">
           <Header />
           <p className="w-full flex items-center justify-center text-2xl text-ceter">
             Loading...
@@ -92,9 +92,9 @@ const Animals = () => {
 
   if (statusAnimal === "failed" || statusGenre === "failed") {
     return (
-      <div className="flex w-full h-screen">
+      <div className="flex flex-col lg:flex-row w-full h-screen">
         <Navbar />
-        <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
+        <div className="bg-slate-900 flex flex-col w-5/5 lg:w-4/5 text-teal-400 text-white">
           <Header />
           <p>Something went wrong..</p>
         </div>
@@ -103,45 +103,45 @@ const Animals = () => {
   }
 
   return (
-    <div className="flex w-full h-screen">
+    <div className="flex flex-col lg:flex-row w-full h-screen">
       <Navbar />
-      <div className="bg-slate-900 flex flex-col gap-4 w-[80%] text-teal-400 text-white">
+      <div className="bg-slate-900 flex flex-col gap-4 w-5/5 lg:w-4/5 text-teal-400 text-white">
         <Header title="Animals" />
-        <div className="w-[80%] flex self-center justify-between">
-          <div className="flex w-[42%] gap-2">
+        <div className="w-[80%] flex flex-col lg:flex-row gap-2 self-center items-center lg:justify-between">
+          <div className="flex flex-col lg:flex-row gap-2 w-[60%]">
             <Link
               to="/new_animal"
-              className="w-[45%] group flex items-center justify-center gap-2 p-4 bg-green-500 rounded hover:bg-green-600"
+              className="w-full lg:w-[45%] group flex items-center justify-center gap-2 p-2 bg-green-500 rounded hover:bg-green-600"
             >
               <IoMdAdd className="w-7 h-7" />
               <span>Add Animal</span>
             </Link>
             <button
               type="button"
-              className="w-[55%] group flex items-center justify-center gap-2 p-4 bg-sky-500 rounded hover:bg-sky-600"
+              className=" w-full lg:w-[55%] group flex items-center justify-center gap-2 p-2 bg-sky-500 rounded hover:bg-sky-600"
               onClick={filterMyAnimals}
             >
               <IoFilterSharp className="w-7 h-7" />
               <span>{filterTitle}</span>
             </button>
           </div>
-          <div className="border rounded overflow-hidden flex w-[57%]">
+          <div className="border rounded overflow-hidden flex w-[60%] lg:w-[57%] h-12">
             <input
               type="text"
-              className="px-4 py-2 w-[87%] text-slate-900 outline-0"
+              className="px-4 py-2 w-[75%] text-slate-900 outline-0"
               placeholder="Search by name..."
               onChange={(e) => setSearchInput(e.target.value)}
             />
             <button
-              className="flex items-center justify-center px-4 border-l w-[13%] hover:bg-slate-800"
+              className="flex items-center justify-center p-3 lg:p-6 border-l w-[25%] hover:bg-slate-800"
               onClick={searchAnimal}
             >
-              <CiSearch className="w-7 h-7" />
+              <CiSearch className="w-12 h-12 lg:h-7 md:w-7" />
             </button>
           </div>
         </div>
         {filteredAnimalsList && filteredAnimalsList.length > 0 ? (
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 p-4 overflow-auto">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-8 lg-p-4 overflow-auto">
             {filteredAnimalsList.map((animal) => (
               <li key={animal.id} className="group rounded-xl flex flex-col hover:scale-105 duration-300">
                 <Link
