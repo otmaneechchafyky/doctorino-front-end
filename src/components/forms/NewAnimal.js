@@ -63,7 +63,7 @@ const NewAnimal = () => {
     return (
       <div className="flex w-full h-screen">
         <Navbar />
-        <div className="bg-slate-900 flex flex-col w-[80%] text-teal-400 text-white">
+        <div className="bg-slate-900 flex flex-col w-5/5 lg:w-4/5 text-teal-400 text-white">
           <Header title="New Animal"/>
           <p>Loading ..</p>
         </div>
@@ -84,7 +84,7 @@ const NewAnimal = () => {
   }
 
   return (
-    <div className="flex w-full h-screen">
+    <div className="flex flex-col lg:flex-row w-full h-screen">
       <Navbar />
       <div className="bg-slate-900 flex flex-col gap-4 w-[80%] text-teal-400 text-white">
         <Header title="New Animal" />
