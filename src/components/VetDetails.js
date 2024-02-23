@@ -29,7 +29,7 @@ const VetDetails = () => {
   return (
     <div className="flex w-full h-screen">
       <Navbar />
-      <div className="bg-slate-950 flex flex-col gap-2 w-[80%] text-white">
+      <div className="bg-slate-950 flex flex-col gap-2 w-4/5 text-white">
         <Header title="Vet details" />
         {vetDetails && (
           <div className="w-[80%] flex self-center justify-center gap-8 rounded-lg bg-slate-800 py-4 shadow-lg">
