@@ -13,7 +13,7 @@ const Header = (props) => {
 
   return (
     <div>
-      <header className="flex justify-between p-4">
+      <header className="hidden lg:flex justify-between p-4">
         <h1 className='text-2xl font-bold tracking-wider'>{props.title}</h1>
           {currentUser && (
             <button type="button" className="flex gap-4 bg-teal-400 p-2 rounded">
