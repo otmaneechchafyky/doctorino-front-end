@@ -40,9 +40,9 @@ const Vets = () => {
     }
   }
   return (
-    <div className="flex w-full h-screen">
+    <div className="flex flex-col lg:flex-row w-full h-screen">
       <Navbar />
-      <div className="bg-slate-900 flex flex-col w-[80%] text-white">
+      <div className="bg-slate-900 flex flex-col w-5/5 lg:w-4/5 text-white">
         <Header title="Vets" />
         <div className="border rounded mx-auto flex w-[57%]">
             <input
