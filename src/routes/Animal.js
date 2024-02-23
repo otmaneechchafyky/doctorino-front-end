@@ -67,9 +67,9 @@ const Animal = () => {
   };
 
   return (
-    <div className="flex w-full h-screen">
+    <div className="flex flex-col lg:flex-row w-full h-screen">
       <Navbar />
-      <div className="bg-slate-900 flex flex-col gap-2 w-[80%] text-teal-400 text-white">
+      <div className="bg-slate-900 flex flex-col gap-2 w-5/5 lg:w-4/5 text-teal-400 text-white">
         <Header title="Animal details" />
         <div className="w-[80%] flex self-center justify-between justify-center rounded-lg bg-slate-800 py-4 px-3">
           {animalDetails.length > 0 && (
