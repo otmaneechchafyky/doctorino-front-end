@@ -59,13 +59,13 @@ const NewAppointmentVetId = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row w-full h-screen">
+    <div className="flex flex-col lg:flex-row w-full h-screen bg-slate-950">
       <Navbar />
       <div className="bg-slate-950 flex flex-col gap-2 w-5/5 lg:w-4/5 text-white">
         <Header title="New appointment" />
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-8 mx-auto w-[50%]"
+          className="flex flex-col gap-8 mx-auto py-16 lg:py-0 w-[80%] lg:w-[50%]"
         >
           <input
             type="date"
