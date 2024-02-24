@@ -71,19 +71,19 @@ const Animal = () => {
       <Navbar />
       <div className="bg-slate-900 flex flex-col gap-2 w-5/5 lg:w-4/5 text-teal-400 text-white">
         <Header title="Animal details" />
-        <div className="w-[80%] flex self-center justify-between justify-center rounded-lg bg-slate-800 py-4 px-3">
+        <div className="w-[95%] lg:w-[80%] flex self-center justify-between justify-center rounded-lg bg-slate-800 py-4 px-3">
           {animalDetails.length > 0 && (
-            <div className="flex justify-center w-full gap-8">
+            <div className="flex flex-col lg:flex-row justify-center w-full gap-8">
               <img
                 src={animalDetails[0].animal_photo}
                 alt={animalDetails[0].name}
-                className="w-[25rem] h-[25rem] rounded-xl"
+                className="w-[25rem] h-[20rem] lg:h-[25rem] rounded-xl"
               />
-              <div className="grid gap-4 px-2">
+              <div className="grid gap-8 lg:gap-4 px-2">
                 <p className="text-center text-4xl font-bold font-sans tracking-wider">
                   {animalDetails[0].name}
                 </p>
-                <div className="grid grid-cols-2 gap-16">
+                <div className="grid grid-cols-2 gap-12 lg:gap-16">
                   {animalGenre.length > 0 && (
                     <p className="grid gap-1">
                       <span className="text-teal-300 text-lg flex gap-2 items-center">
@@ -99,7 +99,7 @@ const Animal = () => {
                     <span>{animalDetails[0].date_of_birth}</span>
                   </p>
                 </div>
-                <div className="grid grid-cols-2 gap-16">
+                <div className="grid lg:grid-cols-2 justify-center gap-2 lg:gap-16">
                   <p className="grid gap-1">
                     <span className="text-teal-300 text-lg flex gap-2 items-center">
                       <BiRun className="w-7 h-7" />
@@ -115,7 +115,7 @@ const Animal = () => {
                     <span>{animalDetails[0].weight} Kg</span>
                   </p>
                 </div>
-                <div className="grid grid-cols-2 gap-16">
+                <div className="grid grid-cols-2 gap-8 lg:gap-16">
                   <p className="grid gap-1">
                     <span className="text-teal-300 text-lg flex gap-2 items-center">
                       <IoMdCalendar className="w-7 h-7" />
@@ -135,10 +135,10 @@ const Animal = () => {
             </div>
           )}
         </div>
-        <div className="mx-auto w-[60%] flex items-center justify-between px-32 mt-2">
+        <div className="mx-auto lg:w-[60%] flex items-center justify-between gap-2 lg:gap-1 lg:px-32 mt-2 py-4 lg:py-0">
           <button
             type="button"
-            className="flex items-center justify-around gap-2 py-4 px-16 bg-red-600 text-lg rounded-lg hover:bg-red-700 hover:scale-95 duration-150"
+            className="flex items-center justify-around gap-2 py-4 px-8 lg:px-16 bg-red-600 text-lg rounded-lg hover:bg-red-700 hover:scale-95 duration-150"
             onClick={handleDelete}
           >
             <MdDelete className="text-xl" />
@@ -147,7 +147,7 @@ const Animal = () => {
           <Link
             to={`/home/edit_animal/${animalId}`}
             type="button"
-            className="flex items-center justify-around gap-2 py-4 px-16 bg-sky-700 text-lg rounded-lg hover:bg-sky-800 hover:scale-95 duration-150"
+            className="flex items-center justify-around gap-2 py-4 px-8 lg:px-16 bg-sky-700 text-lg rounded-lg hover:bg-sky-800 hover:scale-95 duration-150"
           >
             <MdEdit className="text-xl" />
             Edit
