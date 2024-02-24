@@ -57,7 +57,7 @@ const Appointments = () => {
               <span>Get appointment</span>
             </Link>
           </div>
-        <div className="scroll-container w-full lg:w-[90%] self-center p-1 lg:p-6 overflow-y-scroll px-2 lg:px-0">    
+        <div className="scroll-container w-full lg:w-[90%] self-center p-1 lg:p-6 overflow-y-scroll px-2 lg:px-4">    
           {appointments && appointments.length > 0 ? (
             <section>
               <div className="bg-slate-800">
