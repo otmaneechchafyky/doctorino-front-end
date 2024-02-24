@@ -27,13 +27,13 @@ const VetDetails = () => {
   }, [dispatch, vetId]);
 
   return (
-    <div className="flex w-full h-screen">
+    <div className="flex flex-col lg:flex-row w-full h-screen bg-slate-900">
       <Navbar />
-      <div className="bg-slate-950 flex flex-col gap-2 w-4/5 text-white">
+      <div className="bg-slate-900 flex flex-col gap-4 lg:gap-0 w-5/5 lg:w-4/5 text-white pb-4 lg:pb-0">
         <Header title="Vet details" />
         {vetDetails && (
-          <div className="w-[80%] flex self-center justify-center gap-8 rounded-lg bg-slate-800 py-4 shadow-lg">
-            <div className="flex flex-col gap-8 w-[48%] px-4">
+          <div className="w-[90%] lg:w-[80%] flex flex-col-reverse lg:flex-row self-center justify-center gap-4 lg:gap-8 rounded-lg bg-slate-800 pb-4 lg:pb-0 lg:py-4 shadow-lg">
+            <div className="flex flex-col gap-4 lg:gap-8 w-full lg:w-[48%] px-4">
               <h1 className="flex items-end gap-2">
                 <p className="text-4xl font-bold">{vetDetails.name}</p>
                 {specializationsList &&
@@ -71,7 +71,7 @@ const VetDetails = () => {
             <img
               src={vetDetails.vet_photo}
               alt={vetDetails.name}
-              className="w-[48%] mr-4 rounded-xl"
+              className="w-full lg:w-[48%] mr-4 rounded-xl"
             />
           </div>
         )}
