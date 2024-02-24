@@ -39,7 +39,11 @@ const Navbar = () => {
   }, [])
 
   const handleHamburger = () => {
+    if (window.innerWidth > 720) {
+      setHamburgerBool(true)
+    } else {
       setHamburgerBool(!hamburgerBool);
+    }
   };
 
   useEffect(() => {
@@ -81,7 +85,7 @@ const Navbar = () => {
             <div className="flex flex-col items-center lg:items-start">
               <Link
                 to="/home/animals"
-                className="group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-center lg:justify-start"
+                className="group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-start"
                 onClick={handleHamburger}
               >
                 <li className="list-none flex flex-row gap-2 justify-start items-center">
@@ -93,7 +97,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/home/vets"
-                className="group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-center lg:justify-start"
+                className="group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-start"
                 onClick={handleHamburger}
               >
                 <li className="list-none flex flex-row gap-2 justify-start items-center">
@@ -105,7 +109,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/home/appointments"
-                className="group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-center lg:justify-start"
+                className="group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-start"
                 onClick={handleHamburger}
               >
                 <li className="list-none flex flex-row gap-2 justify-start items-center">
@@ -117,7 +121,7 @@ const Navbar = () => {
               </Link>{" "}
               <Link
                 to="/new_appointment"
-                className="group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-center lg:justify-start"
+                className="group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-start"
               >
                 {" "}
                 <li className="list-none flex flex-row gap-2 justify-left items-center">
@@ -129,7 +133,7 @@ const Navbar = () => {
                 </li>{" "}
               </Link>{" "}
               <li
-                className="list-none flex flex-row gap-2 justify-left items-center mt-[1rem] group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-center lg:justify-start"
+                className="list-none flex flex-row gap-2 justify-left items-center mt-[1rem] group cursor-pointer hover:bg-teal-300 p-2 w-full flex justify-start"
                 onClick={handleLogout}
               >
                 {" "}
