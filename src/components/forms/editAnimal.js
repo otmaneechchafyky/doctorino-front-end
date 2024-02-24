@@ -71,13 +71,13 @@ const EditAnimal = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row w-full h-screen">
+    <div className="flex flex-col lg:flex-row w-full h-screen bg-slate-900">
       <Navbar />
       <div className="bg-slate-900 flex flex-col gap-4 w-5/5 lg:w-4/5 text-teal-400 text-white">
         <Header title="Edit animal" />
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-8 mx-auto w-[50%]"
+          className="flex flex-col gap-8 mx-auto w-[80%] lg:w-[50%] py-16 lg:py-0"
         >
           <input
             type="text"
